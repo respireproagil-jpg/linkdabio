@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RespirePRO | Links</title>
+<meta name="description" content="Fisioterapia respiratória baseada em evidência, de forma descomplicada. Cursos, ebooks e mentorias da RespirePRO.">
+<meta name="theme-color" content="#443A69">
+<style>
+  :root{
+    --roxo:#443A69;
+    --roxo-medio:#616194;
+    --amarelo:#FFCF70;
+    --off:#F7F7F7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    min-height:100vh;
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--off);
+    background:linear-gradient(180deg,var(--roxo) 0%,#352d54 100%);
+    display:flex;justify-content:center;
+    padding:40px 16px 32px;
+  }
+  main{width:100%;max-width:480px;text-align:center}
+
+  .logo{
+    width:96px;height:96px;border-radius:50%;
+    margin:0 auto 16px;
+    background:var(--amarelo);color:var(--roxo);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:30px;letter-spacing:-1px;
+    box-shadow:0 0 0 4px rgba(255,207,112,.25);
+  }
+  /* Para usar a logo real: coloque logo.png na pasta e troque a div .logo por:
+     <img class="logo-img" src="logo.png" alt="RespirePRO"> */
+  .logo-img{width:168px;height:168px;border-radius:28px;object-fit:contain;margin:0 auto 16px;display:block;background:var(--off);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+
+  h1{font-size:24px;font-weight:800;letter-spacing:.2px}
+  .handle{margin-top:2px;color:var(--amarelo);font-weight:600;font-size:15px}
+  .tagline{
+    margin:12px auto 28px;max-width:360px;
+    font-size:15px;line-height:1.5;color:rgba(247,247,247,.85);
+  }
+
+  .links{display:flex;flex-direction:column;gap:12px}
+  .secao{
+    margin:14px 0 0;text-align:left;
+    font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+    color:var(--amarelo);opacity:.9;
+  }
+  .btn{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:16px 18px;border-radius:14px;text-decoration:none;text-align:left;
+    background:rgba(247,247,247,.08);
+    border:1px solid rgba(247,247,247,.18);
+    color:var(--off);font-weight:600;font-size:16px;line-height:1.25;
+    transition:transform .15s ease,background .15s ease,border-color .15s ease;
+  }
+  .btn small{display:block;margin-top:3px;font-weight:400;font-size:13px;color:rgba(247,247,247,.72)}
+  .btn .seta{flex:none;font-size:20px;color:var(--amarelo)}
+  .btn:hover,.btn:focus-visible{
+    transform:translateY(-2px);
+    background:rgba(247,247,247,.14);
+    border-color:var(--amarelo);
+    outline:none;
+  }
+  .btn.destaque{
+    background:var(--amarelo);color:var(--roxo);border-color:var(--amarelo);
+    font-weight:800;
+  }
+  .btn.destaque small{color:rgba(68,58,105,.8)}
+  .btn.destaque .seta{color:var(--roxo)}
+  .btn.destaque:hover{background:#ffd98d}
+
+  .btn.suporte{
+    background:transparent;border-style:dashed;
+  }
+
+  footer{margin-top:32px;font-size:12px;color:rgba(247,247,247,.6);line-height:1.6}
+  footer b{color:var(--amarelo);font-weight:600}
+</style>
+</head>
+<body>
+<main>
+  <!-- Coloque o arquivo logo.jpeg na mesma pasta deste index.html -->
+  <img class="logo-img" src="logo.jpeg" alt="RespirePRO Raciocínio Ágil" width="168" height="168"
+       onerror="this.outerHTML='<div class=&quot;logo&quot; aria-hidden=&quot;true&quot;>RP</div>'">
+  <h1>RespirePRO</h1>
+  <p class="handle">@respire.pro</p>
+  <p class="tagline">Fisioterapia respiratória baseada em evidência, de forma descomplicada. Bora respirar ciência?</p>
+
+  <nav class="links" aria-label="Links da RespirePRO">
+
+    <!-- TROQUE cada href="#" pelo link real (Kiwify, site, etc.) -->
+
+    <p class="secao">Cursos e plataforma</p>
+
+    <a class="btn destaque" href="https://pay.kiwify.com.br/za56NYL" data-link="tmipro" target="_blank" rel="noopener">
+      <span>Curso TMIPRO<small>Seu passaporte para a maestria em TMI</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn" href="https://atualizapro.vercel.app" data-link="atualizapro">
+      <span>Plataforma AtualizaPRO<small>Atualização contínua em fisioterapia respiratória</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <p class="secao">Ebooks</p>
+
+    <a class="btn" href="https://pay.kiwify.com.br/pX1ojQJ" data-link="ebook-principios" target="_blank" rel="noopener">
+      <span>Ebook: Princípios Básicos do TMI</span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn" href="https://pay.kiwify.com.br/uVtFyy4" data-link="ebook-idosos" target="_blank" rel="noopener">
+      <span>Ebook: TMI nos Idosos</span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn" href="https://pay.kiwify.com.br/xRk6DZh" data-link="ebook-sarcopenia" target="_blank" rel="noopener">
+      <span>Ebook: Como diagnosticar a Sarcopenia Respiratória</span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn" href="https://pay.kiwify.com.br/Xxv3Plh" data-link="combo-ebooks" target="_blank" rel="noopener">
+      <span>Combo Ebooks PRO<small>Os 3 ebooks de TMI juntos</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <p class="secao">Mentoria e mais</p>
+
+    <a class="btn" href="https://pay.kiwify.com.br/91CGG0C" data-link="mentoria-esportes" target="_blank" rel="noopener">
+      <span>Mentoria TMI nos Esportes</span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn" href="https://kiwify.app/4nCEbXy" data-link="respire-facil" target="_blank" rel="noopener">
+      <span>Respire Fácil<small>Cálculos Respiratórios</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn" href="https://kiwify.app/x30zdTa" data-link="respire-facil-funcionais" target="_blank" rel="noopener">
+      <span>Respire Fácil<small>Cálculos Funcionais</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn" href="https://pay.kiwify.com.br/OpOl2OC" data-link="combo-respire-facil" target="_blank" rel="noopener">
+      <span>Combo Respire Fácil<small>Automação de Cálculos Respiratórios e Funcionais</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+
+    <a class="btn suporte" href="https://wa.me/5542988137273" data-link="suporte" target="_blank" rel="noopener">
+      <span>Suporte RespirePRO<small>Atendimento pelo WhatsApp</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </nav>
+
+  <footer>
+    <p>Ana Carolina Dorigoni Bini <b>·</b> Christiane Riedi Daniel</p>
+    <p>Fisioterapeutas e mentoras</p>
+  </footer>
+</main>
+</body>
+</html>
