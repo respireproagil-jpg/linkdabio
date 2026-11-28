@@ -1,182 +1,268 @@
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>RespirePRO | Links</title>
-<meta name="description" content="Fisioterapia respiratória baseada em evidência, de forma descomplicada. Cursos, ebooks e mentorias da RespirePRO.">
-<meta name="theme-color" content="#443A69">
+<meta name="description" content="Fisioterapia respiratória baseada em evidência, de forma descomplicada. Cursos, apps, ebooks e mentorias da RespirePRO.">
+<meta name="theme-color" content="#2E2650">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-  :root{
-    --roxo:#443A69;
-    --roxo-medio:#616194;
-    --amarelo:#FFCF70;
-    --off:#F7F7F7;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    min-height:100vh;
-    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
-    color:var(--off);
-    background:linear-gradient(180deg,var(--roxo) 0%,#352d54 100%);
-    display:flex;justify-content:center;
-    padding:40px 16px 32px;
-  }
-  main{width:100%;max-width:480px;text-align:center}
+/* Layout: coluna única de celular; destaque da campanha no topo, atalhos por categoria e blocos por tipo de produto */
+:root{
+  --roxo:#443A69; --roxo-fundo:#2E2650; --roxo-medio:#616194; --lilas:#7A6BC2;
+  --ouro:#FFCF70; --ouro-texto:#4A3600; --off:#F7F7F7;
+  --vidro:rgba(247,247,247,.07); --vidro-forte:rgba(247,247,247,.12); --borda:rgba(247,247,247,.14);
+  --texto-suave:rgba(247,247,247,.72);
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--roxo-fundo)}
+body{margin:0;min-height:100%;font-family:var(--body);color:var(--off);font-size:16px;line-height:1.45;
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(122,107,194,.55) 0%, rgba(122,107,194,0) 60%),
+    radial-gradient(80% 40% at 100% 40%, rgba(97,97,148,.35) 0%, rgba(97,97,148,0) 70%),
+    linear-gradient(180deg,var(--roxo) 0%,var(--roxo-fundo) 55%);
+  background-color:var(--roxo-fundo);background-attachment:fixed;}
+main{max-width:480px;margin:0 auto;padding-block:36px 40px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:26px}
 
-  .logo{
-    width:96px;height:96px;border-radius:50%;
-    margin:0 auto 16px;
-    background:var(--amarelo);color:var(--roxo);
-    display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:30px;letter-spacing:-1px;
-    box-shadow:0 0 0 4px rgba(255,207,112,.25);
-  }
-  /* Para usar a logo real: coloque logo.png na pasta e troque a div .logo por:
-     <img class="logo-img" src="logo.png" alt="RespirePRO"> */
-  .logo-img{width:168px;height:168px;border-radius:28px;object-fit:contain;margin:0 auto 16px;display:block;background:var(--off);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+/* Cabeçalho */
+.topo{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.logo{width:150px;height:150px;border-radius:34px;background:var(--off);overflow:hidden;
+  box-shadow:0 0 0 1px rgba(255,207,112,.35),0 14px 40px rgba(10,6,30,.45)}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
+h1{font-family:var(--display);font-weight:800;font-size:32px;letter-spacing:-.02em;margin:6px 0 0;line-height:1}
+h1 span{color:var(--ouro)}
+.handle{color:var(--ouro);font-weight:600;font-size:15px;margin:0}
+.tagline{margin:4px 0 0;color:var(--texto-suave);max-width:34ch;text-wrap:balance}
 
-  h1{font-size:24px;font-weight:800;letter-spacing:.2px}
-  .handle{margin-top:2px;color:var(--amarelo);font-weight:600;font-size:15px}
-  .tagline{
-    margin:12px auto 28px;max-width:360px;
-    font-size:15px;line-height:1.5;color:rgba(247,247,247,.85);
-  }
+/* Atalhos */
+.atalhos{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;margin:0 -2px;scrollbar-width:none}
+.atalhos::-webkit-scrollbar{display:none}
+.atalhos a{flex:none;text-decoration:none;color:var(--off);font-weight:600;font-size:14px;
+  padding:8px 14px;border-radius:999px;background:var(--vidro);border:1px solid var(--borda)}
+.atalhos a:hover,.atalhos a:focus-visible{border-color:var(--ouro);color:var(--ouro);outline:none}
 
-  .links{display:flex;flex-direction:column;gap:12px}
-  .secao{
-    margin:14px 0 0;text-align:left;
-    font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
-    color:var(--amarelo);opacity:.9;
-  }
-  .btn{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:16px 18px;border-radius:14px;text-decoration:none;text-align:left;
-    background:rgba(247,247,247,.08);
-    border:1px solid rgba(247,247,247,.18);
-    color:var(--off);font-weight:600;font-size:16px;line-height:1.25;
-    transition:transform .15s ease,background .15s ease,border-color .15s ease;
-  }
-  .btn small{display:block;margin-top:3px;font-weight:400;font-size:13px;color:rgba(247,247,247,.72)}
-  .btn .seta{flex:none;font-size:20px;color:var(--amarelo)}
-  .btn:hover,.btn:focus-visible{
-    transform:translateY(-2px);
-    background:rgba(247,247,247,.14);
-    border-color:var(--amarelo);
-    outline:none;
-  }
-  .btn.destaque{
-    background:var(--amarelo);color:var(--roxo);border-color:var(--amarelo);
-    font-weight:800;
-  }
-  .btn.destaque small{color:rgba(68,58,105,.8)}
-  .btn.destaque .seta{color:var(--roxo)}
-  .btn.destaque:hover{background:#ffd98d}
+/* Destaque Black */
+.black{position:relative;border-radius:22px;padding:20px;background:var(--ouro);color:var(--roxo-fundo);
+  text-decoration:none;display:flex;flex-direction:column;gap:12px;overflow:hidden;
+  box-shadow:0 18px 40px rgba(255,207,112,.18)}
+.black::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;
+  border:18px solid rgba(68,58,105,.10)}
+.selo{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--roxo-fundo);color:var(--ouro);padding:5px 10px;border-radius:999px}
+.black h2{font-family:var(--display);font-weight:800;font-size:28px;line-height:1.05;margin:0;letter-spacing:-.02em}
+.black p{margin:0;font-weight:500;color:var(--ouro-texto)}
+.preco{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.preco b{font-family:var(--display);font-size:26px;font-weight:800;color:var(--roxo-fundo)}
+.preco span{font-size:14px;color:var(--ouro-texto)}
+.relogio{display:flex;gap:8px}
+.relogio div{flex:1;background:rgba(46,38,80,.10);border-radius:12px;padding:8px 4px;text-align:center}
+.relogio b{display:block;font-family:var(--display);font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.relogio small{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ouro-texto)}
+.cta{display:flex;justify-content:space-between;align-items:center;background:var(--roxo-fundo);color:var(--ouro);
+  border-radius:14px;padding:14px 16px;font-weight:700}
+.black:hover .cta,.black:focus-visible .cta{background:var(--roxo)}
+.black:focus-visible{outline:3px solid var(--off);outline-offset:3px}
 
-  .btn.suporte{
-    background:transparent;border-style:dashed;
-  }
+/* Seções */
+section{display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.secao{display:flex;align-items:center;gap:10px;margin:0 0 2px;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ouro)}
+.secao::after{content:"";flex:1;height:1px;background:var(--borda)}
 
-  footer{margin-top:32px;font-size:12px;color:rgba(247,247,247,.6);line-height:1.6}
-  footer b{color:var(--amarelo);font-weight:600}
+.btn{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;text-decoration:none;color:var(--off);
+  background:var(--vidro);border:1px solid var(--borda);
+  transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);background:var(--vidro-forte);border-color:var(--ouro);outline:none}
+.ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(255,207,112,.14);color:var(--ouro)}
+.ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.txt{display:flex;flex-direction:column;min-width:0;gap:2px}
+.txt b{font-family:var(--display);font-weight:600;font-size:17px;line-height:1.2}
+.txt small{font-size:14px;color:var(--texto-suave)}
+.tag{align-self:flex-start;margin-top:4px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;background:var(--ouro);color:var(--ouro-texto)}
+.seta{margin-left:auto;flex:none;color:var(--ouro);font-size:20px}
+
+.btn.principal{background:linear-gradient(135deg,var(--roxo-medio),var(--roxo));border-color:rgba(255,207,112,.45)}
+.btn.principal .ico{background:var(--ouro);color:var(--roxo-fundo)}
+
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grade .btn{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}
+.grade .btn .seta{display:none}
+.grade .btn.largo{grid-column:1/-1;flex-direction:row;align-items:center}
+.grade .btn.largo .seta{display:block}
+@media (max-width:360px){.grade{grid-template-columns:1fr}}
+
+.suporte{border-style:dashed;background:transparent}
+.numero{font-variant-numeric:tabular-nums}
+
+.pacientes{display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:20px;text-align:center;align-items:center;
+  background:linear-gradient(160deg,#2BA3B8 0%,#1E8FA3 55%,#16707F 100%);border:1px solid rgba(255,255,255,.25);box-shadow:0 14px 34px rgba(10,40,60,.35)}
+.pacientes .folego{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:24px;color:var(--off)}
+.pacientes .folego svg{flex:none;box-shadow:0 0 0 2px rgba(247,247,247,.5);border-radius:50%}
+.pacientes .folego b{color:var(--ouro)}
+.pacientes .aviso{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E3F4F7}
+.pacientes h2{font-family:var(--display);font-size:22px;margin:0;line-height:1.2;text-wrap:balance}
+.pacientes p{margin:0;color:rgba(255,255,255,.9);font-size:15px;max-width:34ch}
+.pacientes a{display:inline-flex;gap:8px;align-items:center;text-decoration:none;font-weight:700;color:var(--roxo-fundo);
+  background:#FFFFFF;color:#16707F;padding:12px 20px;border-radius:12px}
+.pacientes a:hover,.pacientes a:focus-visible{background:#E3F4F7;outline:none}
+footer{text-align:center;color:rgba(247,247,247,.6);font-size:13px;display:flex;flex-direction:column;gap:2px;padding-top:6px}
+footer b{color:var(--ouro);font-weight:600}
+
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
 </style>
+
 </head>
 <body>
 <main>
-  <!-- Coloque o arquivo logo.jpeg na mesma pasta deste index.html -->
-  <img class="logo-img" src="logo.jpeg" alt="RespirePRO Raciocínio Ágil" width="168" height="168"
-       onerror="this.outerHTML='<div class=&quot;logo&quot; aria-hidden=&quot;true&quot;>RP</div>'">
-  <h1>RespirePRO</h1>
-  <p class="handle">@respire.pro</p>
-  <p class="tagline">Fisioterapia respiratória baseada em evidência, de forma descomplicada. Bora respirar ciência?</p>
+  <header class="topo">
+    <div class="logo"><img src="logo.jpeg" alt="RespirePRO Raciocínio Ágil" width="150" height="150"></div>
+    <h1>Respire<span>PRO</span></h1>
+    <p class="handle">@respire.pro</p>
+    <p class="tagline">Fisioterapia respiratória baseada em evidência, de forma descomplicada. Bora respirar ciência?</p>
+  </header>
 
-  <nav class="links" aria-label="Links da RespirePRO">
-
-    <!-- TROQUE cada href="#" pelo link real (Kiwify, site, etc.) -->
-
-    <p class="secao">Aula ao vivo · Terça, 10/11 · 19h</p>
-
-    <a class="btn destaque" href="https://pagina-tmi-pediatria.vercel.app" data-link="aula-tmi-pediatria" target="_blank" rel="noopener">
-      <span>TMI na Pediatria<small>Aula ao vivo: do Treinamento Muscular Inspiratório à Reabilitação da Criança com Asma</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <p class="secao">Black Friday</p>
-
-    <a class="btn destaque" href="https://respirepro.net/" data-link="combo-black-friday" target="_blank" rel="noopener">
-      <span>COMBO BLACK FRIDAY<small>TMIPRO + AtualizaPRO juntos</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <p class="secao">Cursos e plataforma</p>
-
-    <a class="btn destaque" href="https://pay.kiwify.com.br/za56NYL" data-link="tmipro" target="_blank" rel="noopener">
-      <span>Curso TMIPRO<small>Seu passaporte para a maestria em TMI</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn" href="https://pay.kiwify.com.br/caJXzT4" data-link="atualizapro" target="_blank" rel="noopener">
-      <span>Plataforma AtualizaPRO<small>Atualização contínua em fisioterapia respiratória</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <p class="secao">Ebooks</p>
-
-    <a class="btn" href="https://pagina-ebook-tmi.vercel.app" data-link="ebook-principios" target="_blank" rel="noopener">
-      <span>Ebook: Princípios Básicos do TMI<small>De R$ 39,90 por R$ 27,00 ou 6x de R$ 5,07</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn" href="https://pagina-ebook-tmi.vercel.app/idoso/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ebook-tmi-idoso" data-link="ebook-idosos" target="_blank" rel="noopener">
-      <span>Ebook: TMI no Idoso – Edição 2026<small>De R$ 69,90 por R$ 47,00 ou 11x de R$ 5,22</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn" href="https://ebook-sarcopenia-respiratoria.vercel.app" data-link="ebook-sarcopenia" target="_blank" rel="noopener">
-      <span>Ebook Sarcopenia Respiratória – Edição 2026</span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn" href="https://pay.kiwify.com.br/Xxv3Plh" data-link="combo-ebooks" target="_blank" rel="noopener">
-      <span>Combo Ebooks PRO: os 3 ebooks<small>Princípios + Idoso + Sarcopenia · R$ 77 (economize R$ 26,90)</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <p class="secao">Mentoria e mais</p>
-
-    <a class="btn" href="https://pay.kiwify.com.br/91CGG0C" data-link="mentoria-esportes" target="_blank" rel="noopener">
-      <span>Mentoria TMI nos Esportes</span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn" href="https://pay.kiwify.com.br/dXaMZj9" data-link="respire-facil" target="_blank" rel="noopener">
-      <span>Respire Fácil<small>Automação de Cálculos Respiratórios</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn" href="https://pay.kiwify.com.br/VOloaVi" data-link="respire-facil-funcionais" target="_blank" rel="noopener">
-      <span>Respire Fácil<small>Automação de Cálculos Funcionais</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn" href="https://pay.kiwify.com.br/OpOl2OC" data-link="combo-respire-facil" target="_blank" rel="noopener">
-      <span>Combo Respire Fácil<small>Automação de Cálculos Respiratórios e Funcionais</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
-
-    <a class="btn suporte" href="https://wa.me/554299647090" data-link="suporte" target="_blank" rel="noopener">
-      <span>Suporte RespirePRO<small>Atendimento pelo WhatsApp</small></span>
-      <span class="seta" aria-hidden="true">→</span>
-    </a>
+  <nav class="atalhos" aria-label="Ir para">
+    <a href="#cursos">Cursos</a>
+    <a href="#apps">Apps</a>
+    <a href="#ebooks">Ebooks</a>
+    <a href="#mentoria">Mentoria</a>
+    <a href="#suporte">Suporte</a>
   </nav>
 
+  <a class="black" id="blackpro" href="https://respirepro.net/" data-link="combo-black-friday" target="_blank" rel="noopener">
+    <span class="selo">BlackPRO · até 30/11</span>
+    <h2>TMIPRO + AtualizaPRO no mesmo combo</h2>
+    <p>Os dois cursos e os apps juntos, com o menor preço do ano.</p>
+    <div class="preco"><b>R$ 1.097</b><span>à vista ou 12x de R$ 113,46</span></div>
+    <div class="relogio" id="relogio" aria-label="Tempo até o fim da oferta">
+      <div><b id="r-d">--</b><small>dias</small></div>
+      <div><b id="r-h">--</b><small>horas</small></div>
+      <div><b id="r-m">--</b><small>min</small></div>
+      <div><b id="r-s">--</b><small>seg</small></div>
+    </div>
+    <span class="cta">Quero o combo BlackPRO <span aria-hidden="true">→</span></span>
+  </a>
+
+  <section id="cursos" aria-labelledby="t-cursos">
+    <h2 class="secao" id="t-cursos">Cursos</h2>
+    <a class="btn principal" href="https://pay.kiwify.com.br/za56NYL" data-link="tmipro" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v7"/><path d="M12 10c-2 0-3 2-5 2s-3 3-3 6 1 3 3 3 4-2 5-5"/><path d="M12 10c2 0 3 2 5 2s3 3 3 6-1 3-3 3-4-2-5-5"/></svg></span>
+      <span class="txt"><b>TMIPRO</b><small>Treinamento Muscular Inspiratório: +90 aulas em 10 módulos, com certificado</small><em class="tag">App incluso</em></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+    <a class="btn" href="https://respirepro.net/atualizapro/" data-link="atualizapro" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/><path d="M9 12l2 2 4-4"/></svg></span>
+      <span class="txt"><b>AtualizaPRO</b><small>Atualização contínua em fisioterapia respiratória e reabilitação pulmonar</small><em class="tag">App incluso</em></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section id="apps" aria-labelledby="t-apps">
+    <h2 class="secao" id="t-apps">Apps</h2>
+    <a class="btn" href="https://kineproapp.com.br/assinar" data-link="kinepro" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v3h6V3"/><path d="M9 12h6M9 16h4"/></svg></span>
+      <span class="txt"><b>KinePRO</b><small>Prontuário do fisioterapeuta na nuvem</small><em class="tag">30 dias grátis</em></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+    <a class="btn" href="pedipro/" data-link="pedipro" target="_blank" rel="noopener">
+      <span class="ico" style="background:#fff;overflow:hidden"><img src="pedipro/logo-pedipro.png" alt="" width="44" height="44" style="width:44px;height:44px;object-fit:cover"></span>
+      <span class="txt"><b>PediPRO</b><small>App para fisioterapeutas de pediatria: 10 jogos de sopro e avaliações</small><em class="tag">12x de R$ 20,37</em></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+    <a class="btn" href="calculapro/" data-link="calculapro" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h2M12 18h2"/><path d="M16 14v5"/></svg></span>
+      <span class="txt"><b>CalculaPRO</b><small>Calculadoras dos testes respiratórios e funcionais: previsto, classificação e referências</small><em class="tag">12x de R$ 6,93</em></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section id="ebooks" aria-labelledby="t-ebooks">
+    <h2 class="secao" id="t-ebooks">Ebooks</h2>
+    <div class="grade">
+      <a class="btn" href="https://pagina-ebook-tmi.vercel.app" data-link="ebook-principios" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 9h5M9 13h5"/></svg></span>
+        <span class="txt"><b>Princípios Básicos do TMI</b><small>R$ 27 ou 6x de R$ 5,07</small></span>
+      </a>
+      <a class="btn" href="https://pagina-ebook-tmi.vercel.app/idoso/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ebook-tmi-idoso" data-link="ebook-idosos" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.5"/><path d="M12 9v6l-3 6M12 15l3 6"/><path d="M17 11v10"/></svg></span>
+        <span class="txt"><b>TMI no Idoso – Edição 2026</b><small>De R$ 69,90 por R$ 47 ou 11x de R$ 5,22</small></span>
+      </a>
+      <a class="btn" href="https://ebook-sarcopenia-respiratoria.vercel.app" data-link="ebook-sarcopenia" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M7 18V9M12 18V5M17 18v-6"/></svg></span>
+        <span class="txt"><b>Sarcopenia Respiratória – Edição 2026</b><small>Como diagnosticar · ebook</small></span>
+      </a>
+      <a class="btn" href="https://pay.kiwify.com.br/Xxv3Plh" data-link="combo-ebooks" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h7v14H4zM13 6h7v14h-7z"/><path d="M8 3h8"/></svg></span>
+        <span class="txt"><b>Combo Ebooks PRO: os 3 ebooks</b><small>Princípios + Idoso + Sarcopenia · R$ 77 (economize R$ 26,90)</small></span>
+      </a>
+    </div>
+  </section>
+
+  <section id="mentoria" aria-labelledby="t-mentoria">
+    <h2 class="secao" id="t-mentoria">Mentoria</h2>
+    <a class="btn" href="https://pay.kiwify.com.br/91CGG0C" data-link="mentoria-esportes" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="14" cy="4.5" r="2"/><path d="M7 21l3-6 3 2 1 4"/><path d="M10 15l1-5 4 2 3-1"/><path d="M11 10l-3 1-2 3"/></svg></span>
+      <span class="txt"><b>Mentoria TMI nos Esportes</b><small>Acompanhamento com as profs para TMI no atleta</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+
+  <section id="suporte" aria-labelledby="t-suporte">
+    <h2 class="secao" id="t-suporte">Fale com a gente</h2>
+    <a class="btn suporte" href="https://wa.me/554299647090" data-link="suporte" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg></span>
+      <span class="txt"><b>Suporte RespirePRO</b><small class="numero">WhatsApp (42) 9 9964-7090</small></span>
+      <span class="seta" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="pacientes" id="pacientes" aria-labelledby="t-pacientes">
+    <span class="aviso">Para pacientes</span>
+    <span class="folego">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#F7F7F7"/><path d="M20 9v10M20 19c-2 0-3 1.5-3 3.5M20 19c2 0 3 1.5 3 3.5" stroke="#16707F" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M15.5 14c-3.5 1-5.5 5-5.5 10 0 3 1.5 5 4 5 2.5 0 3.5-2 3.5-5v-7.5c0-1.5-.8-2.8-2-2.5zM24.5 14c3.5 1 5.5 5 5.5 10 0 3-1.5 5-4 5-2.5 0-3.5-2-3.5-5v-7.5c0-1.5.8-2.8 2-2.5z" fill="#2BA3B8"/></svg>
+      <span>Fôlego<b>PRO</b></span>
+    </span>
+    <h2 id="t-pacientes">Você é paciente? Este perfil é para você</h2>
+    <p>Dicas de respiração e reabilitação pulmonar em linguagem simples, no @folego.pro.</p>
+    <a href="https://www.instagram.com/folego.pro/" data-link="folego-pro" target="_blank" rel="noopener">Seguir @folego.pro <span aria-hidden="true">→</span></a>
+  </section>
+
   <footer>
-    <p>Ana Carolina Dorigoni Bini <b>·</b> Christiane Riedi Daniel</p>
-    <p>Fisioterapeutas e mentoras</p>
+    <span>Ana Carolina Dorigoni Bini <b>·</b> Christiane Riedi Daniel</span>
+    <span>Fisioterapeutas e mentoras</span>
   </footer>
 </main>
+
+<script>
+// Contagem regressiva do BlackPRO: termina 30/11/2026 às 23:59 (horário de Brasília). Depois disso o bloco some sozinho.
+(function(){
+  var fim = Date.UTC(2026, 11, 1, 2, 59, 59);
+  var bloco = document.getElementById('blackpro');
+  function p(n){return String(n).padStart(2,'0')}
+  function tique(){
+    var r = fim - Date.now();
+    if (r <= 0){ bloco.hidden = true; return; }
+    var s = Math.floor(r/1000);
+    document.getElementById('r-d').textContent = p(Math.floor(s/86400));
+    document.getElementById('r-h').textContent = p(Math.floor(s%86400/3600));
+    document.getElementById('r-m').textContent = p(Math.floor(s%3600/60));
+    document.getElementById('r-s').textContent = p(s%60);
+    setTimeout(tique, 1000);
+  }
+  tique();
+})();
+</script>
+
 </body>
 </html>
-

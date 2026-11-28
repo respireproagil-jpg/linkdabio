@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CalculaPRO | RespirePRO</title>
+<meta name="description" content="CalculaPRO: 41 calculadoras dos testes respiratórios e funcionais, com previsto, classificação e referências. Da RespirePRO.">
+<meta name="theme-color" content="#443A69">
+<link rel="icon" href="logo-calculapro.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: página de vendas em faixas alternadas (claro / roxo), coluna central de 1040px, cartões só onde há itens comparáveis */
+:root{
+  --roxo:#443A69; --roxo-fundo:#2E2650; --roxo-medio:#616194; --lilas:#ECE9F6;
+  --ouro:#FFCF70; --ouro-texto:#4A3600; --off:#F7F7F7; --branco:#FFFFFF;
+  --tinta:#221D35; --suave:#625D7C; --linha:#E3E0EC;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--off);color:var(--tinta);font-family:var(--body);font-size:17px;line-height:1.6}
+.faixa{padding-block:64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.faixa.escura{background:var(--roxo-fundo);color:var(--off)}
+.faixa.roxa{background:linear-gradient(160deg,var(--roxo) 0%,var(--roxo-fundo) 100%);color:var(--off)}
+.faixa.branca{background:var(--branco)}
+.miolo{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.estreito{max-width:720px}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,6.5vw,4rem);font-weight:800}
+h2{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0;max-width:62ch}
+.pro{color:var(--ouro)}
+.claro .pro,.faixa:not(.escura):not(.roxa) .pro{color:#B98A1E}
+.olho{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--roxo-medio)}
+.escura .olho,.roxa .olho{color:var(--ouro)}
+.lead{font-size:1.18rem;opacity:.88}
+
+.topo{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:1.4rem;color:inherit;text-decoration:none}
+.marca svg{width:46px;height:46px;flex:none}
+.por{font-size:.9rem;opacity:.75}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+.hero-txt{display:flex;flex-direction:column;gap:20px;min-width:0}
+.botoes{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:14px;font-weight:700;font-size:1.05rem;text-decoration:none;
+  background:var(--ouro);color:var(--roxo-fundo);border:2px solid var(--ouro);transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-2px);background:#FFD98D}
+.btn:focus-visible{outline:3px solid var(--off);outline-offset:3px}
+.faixa:not(.escura):not(.roxa) .btn:focus-visible{outline-color:var(--roxo)}
+.btn.contorno{background:transparent;color:inherit;border-color:currentColor}
+.btn.contorno:hover{background:rgba(255,255,255,.08)}
+.nota{font-size:.92rem;opacity:.75}
+
+.logo-hero{width:100%;max-width:340px;height:auto;justify-self:center;border-radius:28%;box-shadow:0 30px 60px rgba(10,6,30,.45)}
+.tela{background:var(--branco);color:var(--tinta);border-radius:28px;padding:22px;box-shadow:0 30px 60px rgba(10,6,30,.45);
+  display:flex;flex-direction:column;gap:14px;max-width:360px;width:100%;justify-self:center;border:8px solid #1b1633}
+.tela .barra{display:flex;justify-content:space-between;font-size:.8rem;color:var(--suave)}
+.campo{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--linha);border-radius:12px;padding:10px 12px;font-size:.95rem}
+.campo b{font-variant-numeric:tabular-nums}
+.resultado{background:var(--lilas);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.resultado .num{font-family:var(--display);font-size:2rem;font-weight:800;color:var(--roxo);font-variant-numeric:tabular-nums;line-height:1}
+.resultado small{color:var(--suave);font-size:.82rem}
+.chip{align-self:flex-start;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:999px;background:#DDF3E4;color:#1F6B3A}
+
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.grade.tres{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.grade.tres{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
+.item{background:var(--branco);border:1px solid var(--linha);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.escura .item,.roxa .item{background:rgba(247,247,247,.06);border-color:rgba(247,247,247,.14)}
+.item p{color:var(--suave);font-size:.98rem}
+.escura .item p,.roxa .item p{color:rgba(247,247,247,.75)}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--lilas);color:var(--roxo)}
+.escura .ico,.roxa .ico{background:rgba(255,207,112,.15);color:var(--ouro)}
+.ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 32px;margin:0;padding:0;list-style:none}
+.lista li{display:flex;gap:12px;align-items:baseline;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--linha);min-width:0}
+.lista li span:last-child{font-size:.85rem;color:var(--suave);text-align:right;flex:none;max-width:50%}
+.lista li b{font-weight:600}
+
+.passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;counter-reset:p;margin:0;padding:0;list-style:none}
+.passos li{display:flex;flex-direction:column;gap:6px;counter-increment:p}
+.passos li::before{content:counter(p);font-family:var(--display);font-weight:800;font-size:2.2rem;color:var(--ouro);line-height:1}
+
+.oferta{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+@media (max-width:820px){.oferta{grid-template-columns:1fr}}
+.cartao-preco{background:var(--branco);color:var(--tinta);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 50px rgba(10,6,30,.35)}
+.preco{font-family:var(--display);font-weight:800;font-size:3.2rem;line-height:1;color:var(--roxo);font-variant-numeric:tabular-nums}
+.preco small{font-size:1rem;font-weight:600;color:var(--suave);font-family:var(--body)}
+.preco .x{font-size:1.4rem;font-family:var(--display);font-weight:800;color:var(--roxo);margin-right:2px}
+.avista{font-size:1rem;color:var(--suave);margin-top:-6px}
+.cartao-preco ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.cartao-preco li{display:flex;gap:10px}
+.cartao-preco li::before{content:"✓";color:#B98A1E;font-weight:800}
+.cartao-preco .btn{justify-content:center;background:var(--roxo);color:var(--ouro);border-color:var(--roxo)}
+.cartao-preco .btn:hover{background:var(--roxo-fundo)}
+.cartao-preco .btn:focus-visible{outline-color:var(--roxo)}
+.selo{display:flex;gap:14px;align-items:center;font-size:.95rem}
+.selo svg{width:48px;height:48px;flex:none;color:var(--ouro)}
+
+.profs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.profs{grid-template-columns:1fr}}
+
+details{border-bottom:1px solid var(--linha);padding:16px 0}
+details summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details summary::after{content:"+";color:var(--roxo-medio);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:8px;color:var(--suave)}
+details summary:focus-visible{outline:2px solid var(--roxo);outline-offset:4px;border-radius:4px}
+
+footer.faixa{padding-block:32px;font-size:.9rem}
+footer .miolo{flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:12px;opacity:.8}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+.cat{display:flex;flex-direction:column;gap:14px}
+.cat h3{display:flex;align-items:center;gap:10px}
+.cat .n{font-size:.8rem;font-weight:700;background:var(--lilas);color:var(--roxo);padding:2px 10px;border-radius:999px}
+.numeros{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.numeros div{display:flex;flex-direction:column;gap:2px}
+.numeros b{font-family:var(--display);font-size:2.6rem;font-weight:800;color:var(--ouro);line-height:1}
+</style>
+</head>
+<body>
+<header class="faixa roxa">
+  <div class="miolo">
+    <div class="topo">
+      <a class="marca" href="#"><img src="logo-calculapro.png" alt="" width="46" height="46" style="border-radius:12px;flex:none"><span>Calcula<span class="pro">PRO</span></span></a>
+      <span class="por">por Respire<span class="pro">PRO</span></span>
+    </div>
+    <div class="hero">
+      <div class="hero-txt">
+        <span class="olho">App para fisioterapeutas</span>
+        <h1>Aplicou o teste? O resultado sai na hora.</h1>
+        <p class="lead">O CalculaPRO reúne 41 calculadoras dos testes respiratórios e funcionais que o fisioterapeuta usa na clínica. Você digita os dados e recebe o previsto, a classificação e a referência científica de cada equação.</p>
+        <div class="botoes">
+          <a class="btn" href="#oferta" data-link="calculapro-hero">Quero o CalculaPRO <span aria-hidden="true">→</span></a>
+        </div>
+        <span class="nota">12x de R$ 6,93 ou R$ 67 à vista · acesso por 12 meses · garantia de 7 dias</span>
+      </div>
+      <img class="logo-hero" src="logo-calculapro.png" alt="Logo CalculaPRO" width="340" height="340">
+    </div>
+  </div>
+</header>
+
+<section class="faixa">
+  <div class="miolo estreito">
+    <span class="olho">O desafio</span>
+    <h2>Equação certa, conta certa, referência certa. No meio do atendimento.</h2>
+    <p>Cada teste tem a sua equação de referência, e muitas têm versão brasileira. Procurar o artigo, conferir a fórmula e fazer a conta durante a sessão toma tempo e abre espaço para erro. O CalculaPRO deixa tudo isso pronto no celular.</p>
+  </div>
+</section>
+
+<section class="faixa escura">
+  <div class="miolo">
+    <span class="olho">Em números</span>
+    <div class="numeros">
+      <div><b>41</b><span>calculadoras e escalas</span></div>
+      <div><b>4</b><span>áreas: força, exercício, prescrição e questionários</span></div>
+      <div><b>0</b><span>senhas: você entra com o e-mail da compra</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa branca">
+  <div class="miolo">
+    <span class="olho">Tudo o que tem no app</span>
+    <h2>As calculadoras do CalculaPRO.</h2>
+    <div class="cat">
+      <h3>Força e função respiratória <span class="n">8</span></h3>
+      <ul class="lista">
+        <li><b>PImáx e PEmáx</b><span>Previsto e LIN</span></li>
+        <li><b>SNIP</b><span>Pressão inspiratória nasal, útil quando a vedação do bocal é difícil</span></li>
+        <li><b>Endurance muscular inspiratória</b><span>Teste incremental ou de carga constante</span></li>
+        <li><b>Força muscular respiratória</b><span>Precauções, força e resistência</span></li>
+        <li><b>S-Index (K5)</b><span>Reis e Souza (Brasil), normalidade e atletas</span></li>
+        <li><b>Pico de fluxo expiratório</b><span>Previsto e % do previsto</span></li>
+        <li><b>Classificação GOLD</b><span>Grau espirométrico e grupo A, B ou E</span></li>
+        <li><b>Oxigenoterapia</b><span>Oxímetro em repouso e esforço, titulação e segurança</span></li>
+      </ul>
+    </div>
+    <div class="cat">
+      <h3>Testes de exercício e função física <span class="n">12</span></h3>
+      <ul class="lista">
+        <li><b>TC6 (caminhada de 6 min)</b><span>Previsto, dessaturação e Borg</span></li>
+        <li><b>TC2 (caminhada de 2 min)</b><span>Distância em 2 min no corredor</span></li>
+        <li><b>Marcha estacionária 2 min (2MST)</b><span>Sem precisar de corredor</span></li>
+        <li><b>ISWT</b><span>Velocidade de pico e prescrição da caminhada</span></li>
+        <li><b>Teste do degrau de 6 min (TD6)</b><span>Equação brasileira</span></li>
+        <li><b>Sentar e levantar 30 s</b><span>Força de membros inferiores</span></li>
+        <li><b>Sentar e levantar 1 min</b><span>Repetições, previsto e %</span></li>
+        <li><b>Sentar e levantar 5 vezes</b><span>Tempo, previsto e %</span></li>
+        <li><b>Timed Up and Go (TUG)</b><span>Usual e máximo, risco de quedas</span></li>
+        <li><b>Velocidade da marcha</b><span>Teste de 4 metros, usual e máxima</span></li>
+        <li><b>SPPB</b><span>Equilíbrio, marcha e sentar e levantar (0 a 12)</span></li>
+        <li><b>Preensão palmar</b><span>Dinamometria e corte de fraqueza</span></li>
+      </ul>
+    </div>
+    <div class="cat">
+      <h3>Prescrição e segurança do treino <span class="n">5</span></h3>
+      <ul class="lista">
+        <li><b>Segurança da sessão</b><span>Semáforo antes e durante o treino</span></li>
+        <li><b>FC de treino</b><span>FC máxima por vários métodos e Karvonen</span></li>
+        <li><b>Teste cardiopulmonar</b><span>Zonas de treino por LV1 e PCR</span></li>
+        <li><b>Carga do treino resistido</b><span>1RM e cargas de 40% a 60%</span></li>
+        <li><b>Plano de exercícios (FITT-VP)</b><span>Prescrição individualizada e metas SMART</span></li>
+      </ul>
+    </div>
+    <div class="cat">
+      <h3>Questionários e escalas <span class="n">16</span></h3>
+      <ul class="lista">
+        <li><b>CAT</b><span>Impacto da DPOC, 0 a 40</span></li>
+        <li><b>mMRC</b><span>Dispneia, grau 0 a 4</span></li>
+        <li><b>Escala MRC</b><span>Grau I a V</span></li>
+        <li><b>SARC-F</b><span>Rastreio de sarcopenia</span></li>
+        <li><b>Fagerström e carga tabágica</b><span>Dependência de nicotina e maços-ano</span></li>
+        <li><b>IPAQ versão curta</b><span>Nível de atividade física</span></li>
+        <li><b>Duke Activity Status Index</b><span>0 a 58,2</span></li>
+        <li><b>Minnesota (MLHFQ)</b><span>Qualidade de vida na IC, 0 a 105</span></li>
+        <li><b>EQ-5D</b><span>5 dimensões e saúde geral</span></li>
+        <li><b>HADS</b><span>Ansiedade e depressão, 0 a 21 cada</span></li>
+        <li><b>Severidade da fadiga</b><span>9 a 63</span></li>
+        <li><b>Epworth</b><span>Sonolência, 0 a 24</span></li>
+        <li><b>Pittsburgh</b><span>Qualidade do sono, 0 a 21</span></li>
+        <li><b>Tampa</b><span>Cinesiofobia, 17 a 68</span></li>
+        <li><b>PRAISE</b><span>Autoeficácia, 15 a 60</span></li>
+        <li><b>WPAI-GH</b><span>Prejuízo no trabalho e nas atividades</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="miolo">
+    <span class="olho">Por que usar</span>
+    <h2>Feito para a rotina da clínica.</h2>
+    <div class="grade tres">
+      <div class="item"><span class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 9h5M9 13h5"/></svg></span><h3>Referência em cada cálculo</h3><p>Os resultados vêm com a referência científica, incluindo equações brasileiras como as do TD6 e do S-Index.</p></div>
+      <div class="item"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 19l5-6 4 3 7-9"/><circle cx="20" cy="7" r="1.5"/></svg></span><h3>Do teste à prescrição</h3><p>Além de avaliar, o app ajuda a prescrever: FC de treino, zonas pelo cardiopulmonar, carga do resistido e plano FITT-VP.</p></div>
+      <div class="item"><span class="ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg></span><h3>Dados no seu aparelho</h3><p>O que você registra fica guardado só no seu celular. O e-mail serve apenas para liberar o acesso, sem senha.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa roxa" id="oferta">
+  <div class="miolo oferta">
+    <div class="hero-txt">
+      <span class="olho">Oferta</span>
+      <h2>Um ano com todas as calculadoras no bolso.</h2>
+      <p class="lead">Menos de R$ 7 por parcela para ter avaliação, classificação e prescrição em um só app, com a evidência por trás de cada número.</p>
+      <div class="selo"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/></svg><span><b>Garantia de 7 dias.</b> Se não gostar, devolvemos o valor pago.</span></div>
+    </div>
+    <div class="cartao-preco">
+      <span class="olho">Calcula<span class="pro">PRO</span> · app para fisioterapeutas · 12 meses</span>
+      <span class="preco"><span class="x">12x</span> R$ 6,93</span>
+      <span class="avista">ou R$ 67 à vista</span>
+      <ul>
+        <li>41 calculadoras e escalas</li>
+        <li>Previsto, classificação e referência</li>
+        <li>Prescrição do treino e segurança da sessão</li>
+        <li>Acesso pelo e-mail, sem senha</li>
+      </ul>
+      <a class="btn" href="https://pay.kiwify.com.br/4GaPAth" data-link="calculapro-checkout" target="_blank" rel="noopener">Comprar agora <span aria-hidden="true">→</span></a>
+      <span class="nota" style="text-align:center">Pagamento seguro pela Kiwify</span>
+    </div>
+  </div>
+</section>
+
+<section class="faixa branca">
+  <div class="miolo">
+    <span class="olho">Quem criou</span>
+    <h2>Fisioterapia respiratória baseada em evidência, de forma descomplicada.</h2>
+    <div class="profs">
+      <div class="item"><h3>Prof. Ana Carolina Dorigoni Bini</h3><p>Fisioterapeuta respiratória, professora e mentora. Mãe do Bento e da Beatriz.</p></div>
+      <div class="item"><h3>Prof. Christiane Riedi Daniel</h3><p>Fisioterapeuta respiratória, professora e mentora. Mãe do Pedro Henrique.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="miolo estreito">
+    <span class="olho">Perguntas frequentes</span>
+    <h2>Dúvidas comuns</h2>
+    <div>
+      <details><summary>Para quem é o CalculaPRO?</summary><p>Para fisioterapeutas que avaliam e prescrevem exercício na área respiratória, cardiovascular e funcional.</p></details>
+      <details><summary>Como eu entro no app?</summary><p>Abra calcula.respirepro.net e digite o e-mail usado na compra. Você recebe um link para entrar, sem senha.</p></details>
+      <details><summary>Os dados dos meus pacientes ficam salvos na nuvem?</summary><p>Não. O que você registra fica só no seu aparelho. Para prontuário na nuvem, use o Kine<span class="pro">PRO</span>.</p></details>
+      <details><summary>Tem valores de referência pediátricos?</summary><p>Os valores pediátricos, C-ACT, AIMS e Denver estão no Pedi<span class="pro">PRO</span>, o nosso app de fisioterapia pediátrica.</p></details>
+      <details><summary>O acesso dura quanto tempo?</summary><p>12 meses a partir da compra. Depois disso, você pode renovar.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pedimos o reembolso pela Kiwify e você recebe o valor de volta.</p></details>
+      <details><summary>O app substitui o julgamento clínico?</summary><p>Não. O CalculaPRO é um apoio à decisão clínica. A decisão final é sempre do fisioterapeuta.</p></details>
+      <details><summary>Sou aluno da RespirePRO. Tenho desconto?</summary><p>Fale com o suporte pelo WhatsApp (42) 9 9964-7090 e consulte as condições para alunos.</p></details>
+    </div>
+    <div class="botoes"><a class="btn" href="#oferta" style="background:var(--roxo);color:var(--ouro);border-color:var(--roxo)">Quero o CalculaPRO <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
+<footer class="faixa escura">
+  <div class="miolo"><span>Calcula<span class="pro">PRO</span> é um produto Respire<span class="pro">PRO</span> · @respire.pro</span><span>Suporte: WhatsApp (42) 9 9964-7090</span></div>
+</footer>
+
+</body>
+</html>
